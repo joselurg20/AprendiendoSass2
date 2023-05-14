@@ -110,3 +110,50 @@ $descripcion: ("nombre": white, "apellido": red, "edad": orange);
     font-size: escalar(600px, 100px, 5);
     color: white;
 }
+//esto seria para la tabla
+.tablita{
+    @for $i from 1 through 7{
+        tr:nth-child(#{$i}){
+            @if $i%1 == 0{
+                background-color: greenyellow;
+            }@else if $i%2 == 0 {
+                background-color:red;
+            }@else if $i%3 == 0 {
+                background-color:magenta;
+            }@else if $i%4 == 0 {
+                background-color:aquamarine;
+            }@else if $i%4 == 0 {
+                background-color:yellow;
+            }@else if $i%4 == 0 {
+                background-color:darkgray;
+            }else {
+                background-color: orange;
+            }
+        }
+    }
+}
+
+// Definir una lista de tamaños de letras para h1-h6
+$tamanos-letras: 24px, 20px, 18px, 16px, 14px, 12px;
+
+@for $i from 1 through length($tamanos-letras) {
+  h#{$i} {
+    font-size: nth($tamanos-letras, $i);
+  }
+}
+
+
+// metodo calcular anchura
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+
+@mixin aplicar-anchura-elemento($breakpoint) {
+    @if $breakpoint == small {
+      width: $anchura-elemento-small;
+    } @else if $breakpoint == medium {
+      width: $anchura-elemento-medium;
+    } @else if $breakpoint == large {
+      width: $anchura-elemento-large;
+    }
+  }
